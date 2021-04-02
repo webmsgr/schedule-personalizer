@@ -416,9 +416,10 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
 
-/* scroll table */
-// get date 
 
+/* === scroll table === */
+// get the day number
+// scroll the table to that day
 function scroll_to_day(debug) {
 	let day = new Date().getDay();
 	if (debug !== undefined) day = debug;
@@ -431,10 +432,20 @@ function scroll_to_day(debug) {
 		case 5: { pos = 700; break; }
 		default: { break; }
 	}
-	document.getElementById("classes-table").scroll(pos, 0)
+	let table_el = document.getElementById("classes-table");
+	table_el.scroll(0, 0);
+	table_el.scroll(pos, 0);
 }
 
 scroll_to_day();
+
+document.addEventListener("visibilitychange", function() {
+	if (document.hidden === false) {
+		scroll_to_day();
+	}
+});
+
+
 
 window.addEventListener("load", function () {
 	if (isPWA()) {
@@ -452,13 +463,12 @@ window.addEventListener("load", function () {
 function init_ServiceWorker() {
 	if ('serviceWorker' in navigator) {
 		window.addEventListener('load', function () {
-			navigator.serviceWorker.register('/schedule-personalizer/sw.js').then(function (registration) {
-				// Registration was successful
-				console.log('ServiceWorker registration successful with scope: ', registration.scope);
-			}, function (err) {
-				// registration failed :(
-				console.log('ServiceWorker registration failed: ', err);
-			});
+			navigator.serviceWorker.register('/schedule-personalizer/sw.js')
+			  .then(function (registration) {
+				  console.log('ServiceWorker registration successful with scope: ', registration.scope);
+			  }, function (err) {
+				  console.log('ServiceWorker registration failed: ', err);
+			  });
 		});
 	}
 }
