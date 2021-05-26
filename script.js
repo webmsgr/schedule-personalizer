@@ -1,4 +1,11 @@
+const in1=[{we:false,p:"arr",time:"8:05 - 8:35"},{p:"adv",time:"8:35 - 9:05"},{p:"pass",time:"9:05 - 9:10"},{p:"1",time:"9:10 - 10:40"},{p:"pass",time:"10:40 - 10:45"},{p:"lnc",time:"10:45 - 11:15",l:"1"},{p:"3",time:"11:20 - 12:30",l:"1"},{p:"3",time:"10:45 - 11:20",l:"2"},{p:"lnc",time:"11:20 - 11:50",l:"2"},{p:"3",time:"11:55 - 12:30",l:"2"},{p:"3",time:"10:45 - 12:00",l:"3"},{p:"lnc",time:"12:00 - 12:30",l:"3"},{p:"pass",time:"12:30 - 12:35"},{p:"5",time:"12:35 - 2:05"},{p:"dism",time:"2:05 - 2:35"}];
+const in2=[{we:false,p:"arr",time:"8:05 - 8:35"},{p:"adv",time:"8:35 - 9:05"},{p:"pass",time:"9:05 - 9:10"},{p:"2",time:"9:10 - 10:40"},{p:"pass",time:"10:40 - 10:45"},{p:"lnc",time:"10:45 - 11:15",l:"1"},{p:"3",time:"11:20 - 12:30",l:"1"},{p:"3",time:"10:45 - 11:20",l:"2"},{p:"lnc",time:"11:20 - 11:50",l:"2"},{p:"3",time:"11:55 - 12:30",l:"2"},{p:"3",time:"10:45 - 12:00",l:"3"},{p:"lnc",time:"12:00 - 12:30",l:"3"},{p:"pass",time:"12:30 - 12:35"},{p:"4",time:"12:35 - 2:05"},{p:"dism",time:"2:05 - 2:35"}];
+const re1=[{we:false,p:"study",time:"8:05 - 8:35"},{p:"adv",time:"8:35 - 9:05"},{p:"pass",time:"9:05 - 9:10"},{p:"1",time:"9:10 - 10:40"},{p:"pass",time:"10:40 - 10:45"},{p:"lnc",time:"10:45 - 11:15",l:"1"},{p:"3",time:"11:20 - 12:30",l:"1"},{p:"3",time:"10:45 - 11:20",l:"2"},{p:"lnc",time:"11:20 - 11:50",l:"2"},{p:"3",time:"11:55 - 12:30",l:"2"},{p:"3",time:"10:45 - 12:00",l:"3"},{p:"lnc",time:"12:00 - 12:30",l:"3"},{p:"pass",time:"12:30 - 12:35"},{p:"5",time:"12:35 - 2:05"},{p:"study",time:"2:05 - 2:35"}];
+const re2=[{we:false,p:"study",time:"8:05 - 8:35"},{p:"adv",time:"8:35 - 9:05"},{p:"pass",time:"9:05 - 9:10"},{p:"2",time:"9:10 - 10:40"},{p:"pass",time:"10:40 - 10:45"},{p:"lnc",time:"10:45 - 11:15",l:"1"},{p:"3",time:"11:20 - 12:30",l:"1"},{p:"3",time:"10:45 - 11:20",l:"2"},{p:"lnc",time:"11:20 - 11:50",l:"2"},{p:"3",time:"11:55 - 12:30",l:"2"},{p:"3",time:"10:45 - 12:00",l:"3"},{p:"lnc",time:"12:00 - 12:30",l:"3"},{p:"pass",time:"12:30 - 12:35"},{p:"4",time:"12:35 - 2:05"},{p:"study",time:"2:05 - 2:35"}];
+const wed=[{we:false,p:"study",time:"8:05 - 8:50"},{p:"1",time:"8:50 - 9:35"},{p:"2",time:"9:40 - 10:25"},{p:"3",time:"10:30 - 11:15"},{p:"lnc",time:"11:20 - 11:50"},{p:"4",time:"11:50 - 12:35"},{p:"5",time:"12:40 - 1:25"},{p:"study",time:"1:30 - 2:35"}];
+const end=[{we:true}];
 
+/*
 const in1 = [
 	{ we: false, p: "arr", time: "8:05 - 8:35" },
 	{ p: "adv", time: "8:35 - 9:05" },
@@ -33,35 +40,14 @@ const in2 = [
 
 	{ p: "3", time: "10:45 - 11:20", l: "2" },
 	{ p: "lnc", time: "11:20 - 11:50", l: "2" },
-	{
-		p: "3",
-		time: "11:55 - 12:30",
-		l: "2",
-	},
+	{ p: "3", time: "11:55 - 12:30", l: "2" },
 
-	{
-		p: "3",
-		time: "10:45 - 12:00",
-		l: "3",
-	},
-	{
-		p: "lnc",
-		time: "12:00 - 12:30",
-		l: "3",
-	},
+	{ p: "3", time: "10:45 - 12:00", l: "3" },
+	{ p: "lnc", time: "12:00 - 12:30", l: "3" },
 
-	{
-		p: "pass",
-		time: "12:30 - 12:35",
-	},
-	{
-		p: "4",
-		time: "12:35 - 2:05",
-	},
-	{
-		p: "dism",
-		time: "2:05 - 2:35",
-	},
+	{ p: "pass", time: "12:30 - 12:35" },
+	{ p: "4", time: "12:35 - 2:05" },
+	{ p: "dism", time: "2:05 - 2:35" },
 ];
 
 const re1 = [
@@ -249,45 +235,35 @@ const wed = [{
 ];
 
 const end = [ { we: true } ]
+*/
 
 const main = Vue.createApp({
 	data() {
 		return {
-			full: false,
-			day: new Date().getDay(),
-			configMenuOpen: false,
-			hide: false,
-			lunch: "1",
-			cohort: "a",
-			zooms: {
-				p1: "",
-				p2: "",
-				p3: "",
-				p4: "",
-				p5: "",
-				padv: "",
+			amount: {
+				periods: 5,
+				lunches: 3,
+				cohorts: 2,
 			},
-			classes: {
-				p1: "",
-				p2: "",
-				p3: "",
-				p4: "",
-				p5: "",
-				padv: "Advisory",
-				plnc: "Lunch",
-				parr: "Arrival",
-				pdism: "Dismissal",
-				pstudy: "Study",
-				ppass: "Passing",
+			setup: {
+				lunch: [
+					{ lunch: 1, time_start: null, time_end: null },
+				],
 			},
-			rooms: {
-				p1: "",
-				p2: "",
-				p3: "",
-				p4: "",
-				p5: "",
-				padv: "",
+			view: {
+				config_menu: false,
+				edit_menu: true,
 			},
+			user: {
+				full_remote: false,
+				lunch: 1,
+				cohort: 1,
+				teacher: false,
+				periods: [
+					{ period: 1, name: null, zoom: null, room: null, time_start: null, time_end: null },
+				],
+			},
+			current_day: 0,
 			schedule: {
 				a: [end, in1, re1, wed, in2, re2, end],
 				b: [end, re1, in1, wed, re2, in2, end],
@@ -307,12 +283,10 @@ const main = Vue.createApp({
 			this.rooms = data.rooms || this.rooms;
 		}
 		this.save();
-		
+		this.current_day = new Date().getDay();
 	},
 	mounted() {
-		this.$nextTick(function () {
-		  document.getElementById('loading').className = "d-none";
-		});
+		document.getElementById('loading').className = "d-none";
 	},
 	methods: {
 		save() {
@@ -376,7 +350,7 @@ const main = Vue.createApp({
 			return per.p === 'arr' && this.full ? 'Study' : per.p === 'dism' && this.full ? 'Study' : pd === '' ? 'Period ' + per.p : pd;
 		},
 		config() {
-			this.configMenuOpen = !this.configMenuOpen;
+			this.view.config_menu = !this.view.config_menu;
 		},
 	},
 	watch: {
@@ -397,12 +371,25 @@ const main = Vue.createApp({
 		isPWA: function() {
 			return isPWA()
 		},
-		isInstalled: function () {
+		isInstalled: function() {
 			return localStorage.getItem("installed") !== null && localStorage.getItem("installed") === "true";
+		},
+		scheduleForDay: function() {
+			// full remote?
+			// -- 
+			// is teacher
+			// -- 
+			// day
+			// -- 
+			// what cohort
+			// what lunch
+			// what periods
+			// which lunch
+			this.user.periods = [];
+			//
 		}
 	}
 }).mount("#main");
-
 
 /*
   Refresh the data and ui when the site becomes visible. This helps to avoid date/time issues
@@ -412,13 +399,22 @@ function visibilityListener() {
     case "hidden":
       break;
     case "visible":
-      main.day = new Date().getDay();
-      main.configMenuOpen = false;
+      main.current_day = new Date().getDay();
+      main.view.config_menu = false;
       break;
   }
 }
 
 document.addEventListener("visibilitychange", visibilityListener);
+
+
+
+/*
+	NOTES:
+	use computed values to make the array of periods instead of processing it in the html
+
+*/
+
 
 
 
